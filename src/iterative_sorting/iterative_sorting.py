@@ -37,11 +37,15 @@ def count_sort( arr, maximum=-1 ):
         result.append(0)
     for _ in range(maximum + 1):
         indexes.append(0)
+    # Add 1 to indexes of corresponding numbers from arr
     for el in arr:
         indexes[el] += 1
+    # sum
     for i in range(len(indexes)):
         if i > 0:
             indexes[i] += indexes[i - 1]
+    # remove 1 from a correct indexes value
+    # add value from arr in correct place in result array based on indexes
     for i in range(len(arr)):
         indexes[arr[i]] -= 1
         result[indexes[arr[i]]] = arr[i]
